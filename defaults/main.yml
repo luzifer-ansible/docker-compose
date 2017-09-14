@@ -1,0 +1,7 @@
+---
+
+reload_minutes: 15
+
+config:
+  version: "3"
+  services:

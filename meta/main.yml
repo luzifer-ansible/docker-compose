@@ -1,0 +1,41 @@
+---
+galaxy_info:
+  author: Knut Ahlers
+  description: |
+    Install latest docker-compose on a host and start it as a systemd
+    daemon (it does not take care about installing Docker itself so 
+    this needs to be done before by some other role or external
+    functionality.)
+
+  license: Apache
+  min_ansible_version: 2.3
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - xenial
+  - name: Debian
+    versions:
+      - jessie
+      - stretch
+
+  categories:
+    #- cloud
+    #- cloud:ec2
+    #- cloud:gce
+    #- cloud:rax
+    #- clustering
+    #- database
+    #- database:nosql
+    #- database:sql
+    #- development
+    #- monitoring
+    #- networking
+    #- packaging
+    - system
+    #- web
+
+dependencies: []
+  # List your role dependencies here, one per line.
+  # Be sure to remove the '[]' above if you add dependencies
+  # to this list.
