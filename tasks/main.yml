@@ -51,12 +51,12 @@
       RemainAfterExit=yes
 
       ExecStartPre=/usr/local/bin/docker-compose pull --quiet --parallel --ignore-pull-failures
-      ExecStart=/usr/local/bin/docker-compose up -d
+      ExecStart=/usr/local/bin/docker-compose up -d --remove-orphans
 
       ExecStop=/usr/local/bin/docker-compose down
 
       ExecReload=/usr/local/bin/docker-compose pull --quiet --parallel --ignore-pull-failures
-      ExecReload=/usr/local/bin/docker-compose up -d
+      ExecReload=/usr/local/bin/docker-compose up -d --remove-orphans
 
       [Install]
       WantedBy=multi-user.target
