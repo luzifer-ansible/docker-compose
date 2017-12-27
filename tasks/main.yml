@@ -104,7 +104,7 @@
       After=docker-compose.service
 
       [Timer]
-      OnCalendar=*:0/{{ reload_minutes }}
+      OnCalendar=*:0/{{ docker_compose_reload_minutes }}
 
       [Install]
       WantedBy=timers.target

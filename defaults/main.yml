@@ -1,7 +1,7 @@
 ---
 
-reload_minutes: 15
+docker_compose_reload_minutes: 15
 
-config:
+docker_compose_config:
   version: "3"
   services:
