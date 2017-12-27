@@ -1,3 +1,7 @@
+# 1.0.0 / 2017-12-27
+
+  * Rename variable to prevent name collisions
+
 # 0.2.0 / 2017-09-18
 
   * Use "remove-orphans" to remove deleted services
