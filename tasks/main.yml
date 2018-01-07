@@ -36,6 +36,19 @@
 
 # Install and start services
 
+- name: '[Migration] Check multi-user.target dependency of service'
+  command: grep -Fxq 'WantedBy=multi-user.target' /etc/systemd/system/docker-compose.service
+  register: docker_compose_olddep
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
+
+- name: '[Migration] Disable service still WantedBy=multi-user.target'
+  systemd:
+    name: docker-compose.service
+    enabled: no
+  when: docker_compose_olddep.rc == 0
+
 - name: Install docker-compose.service
   copy:
     dest: /etc/systemd/system/docker-compose.service
@@ -59,7 +72,7 @@
       ExecReload=/usr/local/bin/docker-compose up -d --remove-orphans
 
       [Install]
-      WantedBy=multi-user.target
+      WantedBy=docker.service
   register: docker_compose_service
 
 - name: Start and enable docker-compose service
