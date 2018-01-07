@@ -1,3 +1,7 @@
+# 1.0.1 / 2018-01-07
+
+  * Fix: Ensure docker-compose is restarted on docker restart
+
 # 1.0.0 / 2017-12-27
 
   * Rename variable to prevent name collisions
