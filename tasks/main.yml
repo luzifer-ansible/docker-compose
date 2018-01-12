@@ -10,6 +10,7 @@
 - name: Install or update docker-compose
   pip:
     name: docker-compose
+    executable: pip
     state: latest
   register: docker_compose
 
