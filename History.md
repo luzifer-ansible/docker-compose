@@ -1,3 +1,7 @@
+# 1.0.2 / 2018-01-12
+
+  * Ensure plain "pip" is used
+
 # 1.0.1 / 2018-01-07
 
   * Fix: Ensure docker-compose is restarted on docker restart
