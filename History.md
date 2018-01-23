@@ -1,3 +1,7 @@
+# 1.1.0 / 2018-01-23
+
+  * Do not start services in packer builds
+
 # 1.0.2 / 2018-01-12
 
   * Ensure plain "pip" is used
