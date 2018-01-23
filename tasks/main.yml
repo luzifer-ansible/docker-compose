@@ -76,19 +76,18 @@
       WantedBy=docker.service
   register: docker_compose_service
 
-- name: Start and enable docker-compose service
+- name: Enable docker-compose service
   systemd:
     name: docker-compose.service
     daemon_reload: yes
     enabled: yes
-    state: started
 
 - name: Restart service if service configuration changed
   systemd:
     name: docker-compose.service
     daemon_reload: yes
     state: restarted
-  when: docker_compose_service.changed
+  when: docker_compose_service.changed and packer_build_name is not defined
 
 - name: Reload and apply configuration
   systemd:
@@ -124,16 +123,15 @@
       WantedBy=timers.target
   register: docker_compose_reload_timer
 
-- name: Enable and start docker-compose-reload.timer
+- name: Enable docker-compose-reload.timer
   systemd:
     name: docker-compose-reload.timer
     daemon_reload: yes
     enabled: yes
-    state: started
 
 - name: Restart docker-compose-reload.timer if it changed
   systemd:
     name: docker-compose-reload.timer
     daemon_reload: yes
     state: restarted
-  when: docker_compose_reload_timer.changed
+  when: docker_compose_reload_timer.changed and packer_build_name is not defined
