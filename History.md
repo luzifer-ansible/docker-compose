@@ -1,3 +1,7 @@
+# 1.1.1 / 2018-01-23
+
+  * Fix: Don't do reloads on packer builds
+
 # 1.1.0 / 2018-01-23
 
   * Do not start services in packer builds
