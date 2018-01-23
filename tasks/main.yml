@@ -93,7 +93,7 @@
   systemd:
     name: docker-compose.service
     state: reloaded
-  when: docker_compose.changed or compose_file.changed
+  when: (docker_compose.changed or compose_file.changed) and packer_build_name is not defined
 
 - name: Install docker-compose-reload.service
   copy:
