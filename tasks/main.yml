@@ -5,7 +5,7 @@
 - name: Ensure pip to be available
   apt:
     name: python-pip
-    update_cache: yes
+    cache_valid_time: 86400
 
 - name: Install or update docker-compose
   pip:
