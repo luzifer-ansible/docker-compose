@@ -1,3 +1,7 @@
+# 1.3.0 / 2018-04-12
+
+  * Remove deprecated option --parallel
+
 # 1.2.0 / 2018-03-19
 
   * Use `cache_valid_time` for apt module
