@@ -67,7 +67,7 @@
       ExecStartPre=/usr/local/bin/docker-compose pull --quiet --ignore-pull-failures
       ExecStart=/usr/local/bin/docker-compose up -d --remove-orphans
 
-      ExecStop=/usr/local/bin/docker-compose down
+      ExecStop=/usr/local/bin/docker-compose {{ docker_compose_stop_action }}
 
       ExecReload=/usr/local/bin/docker-compose pull --quiet --ignore-pull-failures
       ExecReload=/usr/local/bin/docker-compose up -d --remove-orphans
