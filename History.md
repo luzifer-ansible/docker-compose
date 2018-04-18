@@ -1,3 +1,10 @@
+# 1.4.0 / 2018-04-18
+
+  * Introduce stop action (thanks @EugenMayer)  
+    This enables users of this role to execute `docker-compose stop` instead
+    of `docker-compose down` on shutdown and speed up the startup. For full
+    discussion leading to this see: https://git.io/vpIOy
+
 # 1.3.0 / 2018-04-12
 
   * Remove deprecated option --parallel
