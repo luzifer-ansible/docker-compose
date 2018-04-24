@@ -2,6 +2,7 @@
 
 docker_compose_reload_minutes: 15
 docker_compose_stop_action: down
+docker_compose_validate: true
 
 docker_compose_config:
   version: "3"

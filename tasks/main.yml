@@ -33,7 +33,7 @@
   command: docker-compose config -q
   args:
     chdir: /etc/docker-compose
-  when: compose_file.changed
+  when: compose_file.changed and docker_compose_validate
 
 # Install and start services
 
