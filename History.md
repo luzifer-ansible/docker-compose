@@ -1,3 +1,7 @@
+# 1.5.0 / 2018-04-24
+
+  * Add option to disable validation of docker-compose file
+
 # 1.4.0 / 2018-04-18
 
   * Introduce stop action (thanks @EugenMayer)  
