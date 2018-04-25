@@ -1,3 +1,7 @@
+# 1.6.0 / 2018-04-25
+
+  * Introduce delay option for clusters not to reload at the same time
+
 # 1.5.0 / 2018-04-24
 
   * Add option to disable validation of docker-compose file
