@@ -118,6 +118,7 @@
 
       [Timer]
       OnCalendar=*:0/{{ docker_compose_reload_minutes }}
+      RandomizedDelaySec={{ docker_compose_reload_max_delay }}
 
       [Install]
       WantedBy=timers.target
