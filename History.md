@@ -1,3 +1,8 @@
+# 1.7.0 / 2018-08-16
+
+  * In case the unit broke reload is not possible, try restarting
+  * Better start from stale images than start nothing
+
 # 1.6.0 / 2018-04-25
 
   * Introduce delay option for clusters not to reload at the same time
