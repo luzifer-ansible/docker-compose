@@ -105,7 +105,7 @@
       [Service]
       Type=oneshot
 
-      ExecStart=/bin/systemctl reload docker-compose.service
+      ExecStart=/bin/systemctl reload-or-restart docker-compose.service
 
 - name: Install docker-compose-reload.timer
   copy:
