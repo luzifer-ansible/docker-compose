@@ -64,7 +64,7 @@
       Type=oneshot
       RemainAfterExit=yes
 
-      ExecStartPre=/usr/local/bin/docker-compose pull --quiet --ignore-pull-failures
+      ExecStartPre=-/usr/local/bin/docker-compose pull --quiet --ignore-pull-failures
       ExecStart=/usr/local/bin/docker-compose up -d --remove-orphans
 
       ExecStop=/usr/local/bin/docker-compose {{ docker_compose_stop_action }}
