@@ -1,3 +1,7 @@
+# 1.8.0 / 2018-08-30
+
+  * Remove migration steps
+
 # 1.7.0 / 2018-08-16
 
   * In case the unit broke reload is not possible, try restarting
