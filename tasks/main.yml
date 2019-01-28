@@ -66,13 +66,13 @@
 - name: Enable docker-compose service
   systemd:
     name: docker-compose.service
-    daemon_reload: yes
-    enabled: yes
+    daemon_reload: true
+    enabled: true
 
 - name: Restart service if service configuration changed
   systemd:
     name: docker-compose.service
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
   when: docker_compose_service.changed and packer_build_name is not defined
 
@@ -114,13 +114,13 @@
 - name: Enable docker-compose-reload.timer
   systemd:
     name: docker-compose-reload.timer
-    daemon_reload: yes
-    enabled: yes
+    daemon_reload: true
+    enabled: true
 
 - name: Restart docker-compose-reload.timer if it changed
   systemd:
     name: docker-compose-reload.timer
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
   when: docker_compose_reload_timer.changed and packer_build_name is not defined
 
@@ -174,22 +174,23 @@
 - name: Enable docker-clean timer
   systemd:
     name: docker-clean.timer
-    daemon_reload: yes
-    enabled: yes
+    daemon_reload: true
+    enabled: true
   when: docker_compose_add_cleanjob
 
 - name: Restart docker-clean.timer if it changed
   systemd:
     name: docker-clean.timer
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
   when: docker_compose_clean_timer is defined and docker_compose_clean_timer.changed and packer_build_name is not defined and docker_compose_add_cleanjob
 
 - name: Deactivate docker-clean timer
   systemd:
     name: docker-clean.timer
-    daemon_reload: yes
-    enabled: no
+    daemon_reload: true
+    enabled: false
+    state: stopped
   when: not docker_compose_add_cleanjob
 
 - name: Uninstall docker-clean components
