@@ -100,7 +100,6 @@
     content: |
       [Unit]
       Description=Refresh images and update containers
-      Requires=docker-compose.service
       After=docker-compose.service
 
       [Timer]
