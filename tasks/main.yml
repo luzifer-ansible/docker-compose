@@ -123,3 +123,81 @@
     daemon_reload: yes
     state: restarted
   when: docker_compose_reload_timer.changed and packer_build_name is not defined
+
+- name: Install docker-clean script
+  copy:
+    content: |
+      #!/bin/bash
+      set -euo pipefail
+      
+      function step() { echo $@; }
+      
+      step "Removing containers created / exited >= ~1h ago..."
+      CONTAINERS=$(docker ps -a | gawk '/(hours?|days?|weeks?|months?) ago\s+(Created|Exited)/{ print $1 }' | xargs)
+      [ -n "${CONTAINERS}" ] && docker rm ${CONTAINERS}
+      
+      step "Removing unused and dangling images..."
+      docker image prune -a -f
+    dest: /usr/local/bin/docker-clean
+    mode: '0755'
+    owner: 'root'
+    group: 'root'
+  when: docker_compose_add_cleanjob
+
+- name: Install docker-clean.service
+  copy:
+    dest: /etc/systemd/system/docker-clean.service
+    content: |
+      [Unit]
+      Description=Clean out old containers and unused images
+
+      [Service]
+      Type=oneshot
+      ExecStart=/usr/local/bin/docker-clean
+  when: docker_compose_add_cleanjob
+
+- name: Install docker-clean.timer
+  copy:
+    dest: /etc/systemd/system/docker-clean.timer
+    content: |
+      [Unit]
+      Description=Clean out old containers and unused images
+
+      [Timer]
+      OnCalendar=*:0
+
+      [Install]
+      WantedBy=timers.target
+  register: docker_compose_clean_timer
+  when: docker_compose_add_cleanjob
+
+- name: Enable docker-clean timer
+  systemd:
+    name: docker-clean.timer
+    daemon_reload: yes
+    enabled: yes
+  when: docker_compose_add_cleanjob
+
+- name: Restart docker-clean.timer if it changed
+  systemd:
+    name: docker-clean.timer
+    daemon_reload: yes
+    state: restarted
+  when: docker_compose_clean_timer is defined and docker_compose_clean_timer.changed and packer_build_name is not defined and docker_compose_add_cleanjob
+
+- name: Deactivate docker-clean timer
+  systemd:
+    name: docker-clean.timer
+    daemon_reload: yes
+    enabled: no
+  when: not docker_compose_add_cleanjob
+
+- name: Uninstall docker-clean components
+  file:
+    dest: '{{ item }}'
+    state: absent
+  with_items:
+    - /usr/local/bin/docker-clean
+    - /etc/systemd/system/docker-clean.service
+    - /etc/systemd/system/docker-clean.timer
+  when: not docker_compose_add_cleanjob
