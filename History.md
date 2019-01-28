@@ -1,3 +1,8 @@
+# 1.9.0 / 2019-01-28
+
+  * Remove dependency from reload timer to compose service
+  * Add docker-clean job
+
 # 1.8.0 / 2018-08-30
 
   * Remove migration steps
