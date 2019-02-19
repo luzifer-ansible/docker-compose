@@ -190,6 +190,7 @@
     daemon_reload: true
     enabled: false
     state: stopped
+  ignore_errors: true  # Might fail when the job is not present
   when: not docker_compose_add_cleanjob
 
 - name: Uninstall docker-clean components
