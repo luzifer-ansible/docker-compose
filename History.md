@@ -1,3 +1,7 @@
+# 1.9.1 / 2019-02-19
+
+  * Fix: Allow disabling the clean-job timer to fail
+
 # 1.9.0 / 2019-01-28
 
   * Remove dependency from reload timer to compose service
