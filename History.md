@@ -1,3 +1,7 @@
+# 1.10.0 / 2019-05-12
+
+  * Add support for archlinux
+
 # 1.9.1 / 2019-02-19
 
   * Fix: Allow disabling the clean-job timer to fail
