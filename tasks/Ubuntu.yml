@@ -1,0 +1,17 @@
+---
+
+- name: Ensure pip to be available
+  apt:
+    name: python-pip
+    cache_valid_time: 86400
+
+- name: Install or update docker-compose
+  pip:
+    name: docker-compose
+    executable: pip
+    state: latest
+  register: docker_compose
+
+- set_fact: docker_compose_binary_path="/usr/local/bin/docker-compose"
+
+...

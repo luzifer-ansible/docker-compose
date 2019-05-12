@@ -4,6 +4,7 @@ This role installs latest docker-compose on a host and start it as a systemd dae
 
 ## Requirements
 
+- Archlinux
 - Debian >= 8 (jessie)
 - Ubuntu >= 16.04 (xenial)
 - Docker

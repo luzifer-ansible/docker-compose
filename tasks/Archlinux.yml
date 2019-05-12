@@ -1,0 +1,11 @@
+---
+
+- name: Install or update docker-compose
+  pacman:
+    name: docker-compose
+    state: latest
+  register: docker_compose
+
+- set_fact: docker_compose_binary_path="/usr/bin/docker-compose"
+
+...

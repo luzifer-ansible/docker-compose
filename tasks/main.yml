@@ -2,17 +2,8 @@
 
 # Install docker-compose
 
-- name: Ensure pip to be available
-  apt:
-    name: python-pip
-    cache_valid_time: 86400
-
-- name: Install or update docker-compose
-  pip:
-    name: docker-compose
-    executable: pip
-    state: latest
-  register: docker_compose
+- name: "Loading distribution specific instructions for {{ ansible_distribution }}"
+  include: "{{ ansible_distribution }}.yml"
 
 # Configure docker-compose
 
@@ -51,13 +42,13 @@
       Type=oneshot
       RemainAfterExit=yes
 
-      ExecStartPre=-/usr/local/bin/docker-compose pull --quiet --ignore-pull-failures
-      ExecStart=/usr/local/bin/docker-compose up -d --remove-orphans
+      ExecStartPre=-{{ docker_compose_binary_path }} pull --quiet --ignore-pull-failures
+      ExecStart={{ docker_compose_binary_path }} up -d --remove-orphans
 
-      ExecStop=/usr/local/bin/docker-compose {{ docker_compose_stop_action }}
+      ExecStop={{ docker_compose_binary_path }} {{ docker_compose_stop_action }}
 
-      ExecReload=/usr/local/bin/docker-compose pull --quiet --ignore-pull-failures
-      ExecReload=/usr/local/bin/docker-compose up -d --remove-orphans
+      ExecReload={{ docker_compose_binary_path }} pull --quiet --ignore-pull-failures
+      ExecReload={{ docker_compose_binary_path }} up -d --remove-orphans
 
       [Install]
       WantedBy=docker.service
