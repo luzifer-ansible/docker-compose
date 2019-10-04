@@ -24,7 +24,7 @@
   command: docker-compose config -q
   args:
     chdir: /etc/docker-compose
-  when: compose_file.changed and docker_compose_validate
+  when: compose_file.changed and docker_compose_validate and packer_build_name is not defined
 
 # Install and start services
 
