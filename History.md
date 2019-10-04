@@ -1,3 +1,7 @@
+# 1.10.1 / 2019-10-04
+
+  * Fix: Do not validate config in packer builds: Files may be missing
+
 # 1.10.0 / 2019-05-12
 
   * Add support for archlinux
