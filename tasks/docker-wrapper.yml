@@ -15,6 +15,7 @@
     group: root
     mode: '0755'
     owner: root
+  register: docker_compose
 
 - set_fact: docker_compose_binary_path="/usr/local/bin/docker-compose"
 
