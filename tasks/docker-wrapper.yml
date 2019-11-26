@@ -6,7 +6,7 @@
       #!/bin/bash
       set -euo pipefail
 
-      exec docker run --rm -ti \
+      exec docker run --rm -i \
               -v "/var/run/docker.sock:/var/run/docker.sock" \
               -v "/etc/docker-compose:/etc/docker-compose:ro" \
               luzifer/docker-compose \
