@@ -1,0 +1,21 @@
+---
+
+- name: Install wrapper script
+  copy:
+    content: |
+      #!/bin/bash
+      set -euo pipefail
+
+      exec docker run --rm -ti \
+              -v "/var/run/docker.sock:/var/run/docker.sock" \
+              -v "/etc/docker-compose:/etc/docker-compose:ro" \
+              luzifer/docker-compose \
+              "$@"
+    dest: /usr/local/bin/docker-compose
+    group: root
+    mode: '0755'
+    owner: root
+
+- set_fact: docker_compose_binary_path="/usr/local/bin/docker-compose"
+
+...

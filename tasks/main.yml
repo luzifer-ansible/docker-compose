@@ -4,6 +4,11 @@
 
 - name: "Loading distribution specific instructions for {{ ansible_distribution }}"
   include: "{{ ansible_distribution }}.yml"
+  when: not docker_compose_use_docker_image
+
+- name: Install shell wrapper for docker-compose image
+  include: "docker-wrapper.yml"
+  when: docker_compose_use_docker_image
 
 # Configure docker-compose
 
