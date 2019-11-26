@@ -8,7 +8,8 @@
 
       exec docker run --rm -i \
               -v "/var/run/docker.sock:/var/run/docker.sock" \
-              -v "/etc/docker-compose:/etc/docker-compose:ro" \
+              -v "$(pwd):$(pwd):ro" \
+              -w "$(pwd)" \
               luzifer/docker-compose \
               "$@"
     dest: /usr/local/bin/docker-compose
