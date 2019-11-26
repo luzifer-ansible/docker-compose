@@ -1,3 +1,7 @@
+# 1.11.0 / 2019-11-26
+
+  * Add docker-wrapper method for docker-compose
+
 # 1.10.1 / 2019-10-04
 
   * Fix: Do not validate config in packer builds: Files may be missing
