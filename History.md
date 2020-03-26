@@ -1,3 +1,7 @@
+# 1.13.0 / 2020-03-26
+
+  * Add option to disable reload timer
+
 # 1.12.0 / 2020-03-26
 
   * Specify default empty services for compose
