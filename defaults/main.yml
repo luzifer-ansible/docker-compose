@@ -10,4 +10,4 @@ docker_compose_add_cleanjob: false
 
 docker_compose_config:
   version: "3"
-  services:
+  services: {}
