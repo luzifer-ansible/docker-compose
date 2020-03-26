@@ -1,3 +1,7 @@
+# 1.12.0 / 2020-03-26
+
+  * Specify default empty services for compose
+
 # 1.11.0 / 2019-11-26
 
   * Add docker-wrapper method for docker-compose
