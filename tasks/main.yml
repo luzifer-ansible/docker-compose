@@ -111,13 +111,14 @@
     name: docker-compose-reload.timer
     daemon_reload: true
     enabled: true
+  when: docker_compose_reload_enabled
 
 - name: Restart docker-compose-reload.timer if it changed
   systemd:
     name: docker-compose-reload.timer
     daemon_reload: true
     state: restarted
-  when: docker_compose_reload_timer.changed and packer_build_name is not defined
+  when: docker_compose_reload_enabled and docker_compose_reload_timer.changed and packer_build_name is not defined
 
 - name: Install docker-clean script
   copy:
